@@ -1,14 +1,41 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <LoadingScreen :isLoading="isLoading" />
+    <main v-if="!isLoading">
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link> |
+        <router-link to="/settings">Settings</router-link>  
+      </div>
+      <router-view />
+    </main>
   </div>
 </template>
 
+<script>
+import LoadingScreen from "./components/LoadingScreen";
+
+export default {
+  name: "App",
+  components: {
+    LoadingScreen
+  },
+  data() {
+    return { isLoading: true };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
+  }
+};
+</script>
+
 <style lang="scss">
+body {
+  margin: 0px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,7 +45,9 @@
 }
 
 #nav {
-  padding: 30px;
+  background: #cdcdcd;
+  border-bottom: 1px solid #2c3e50;
+  padding: 15px 30px;
 
   a {
     font-weight: bold;
