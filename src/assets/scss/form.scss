@@ -1,0 +1,182 @@
+.wrapper-box {
+  background-color: white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  padding-bottom: 48px;
+  padding-top: 37px;
+  max-width: 420px;
+
+  img {
+    max-width: 190px;
+  }
+}
+
+.wrapper-box__title {
+  color: black;
+  font-weight: 700;
+  margin-bottom: 37px;
+  padding-top: 20px;
+}
+
+.form {
+  max-width: 320px;
+  margin: auto;
+
+  hr {
+    margin: 5px 0;
+  }
+}
+
+.form input[type=text],
+.form input[type=email],
+.form input[type=password] {
+  border-radius: 2px;
+  border: 1.5px solid #BFBFBF;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
+  color: #828282;
+  font-weight: 500;
+  padding: .57rem .75rem;
+  transition: all ease 500ms;
+}
+
+.form-newaccount {
+  label {
+    color: #828282;
+    font-weight: 500;
+  }
+}
+
+.form-newaccount .form-control {
+  &.orange {
+    border-color: #f26623;
+  }
+  &.yellow {
+    border-color: yellow;
+  }
+  &.green {
+    border-color: #1ed699;
+  }
+}
+
+.form-newaccount__bullet-steps {
+  margin-bottom: 13px;
+  margin-top: 8px;
+}
+
+.invalid-email,
+.invalid-pass,
+.error-message {
+  color: #F26722;
+  display: block;
+  // margin-top: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.error-block {
+  height: 20px;
+  margin-top: 10px;
+}
+
+.invalid-pass {
+  display: block;
+  margin-top: 5px;
+}
+
+.btn {
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.btn-default {
+  background-color: #000;
+  color: white;
+  font-family: 'lato';
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding: .775rem .75rem;
+  width: 100%;
+  transition: all 300ms ease;
+
+  &:hover {
+    background-color: #5629c5;
+  }
+}
+
+.bullet-pass-hor {
+  height: 8px;
+  width: 100%;
+  transition: all ease 400ms;
+
+  span {
+    background-color: #EDEDED;
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    &.orange {
+      background-color: orange;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+    &.green {
+      background-color: #1ed699;
+    }
+  }
+}
+
+.bullet-pass-hor:nth-child(2) {
+  margin: 0 8px;
+}
+
+.bullet-pass-hor {
+  &:nth-child(2),
+  &:nth-child(3) {
+    .orange {
+      background-color: #EDEDED;
+    }
+  }
+  &:nth-child(3) {
+    .yellow {
+      background-color: #EDEDED;
+    }
+  }
+}
+
+.bullet-pass-rounded .fa.orange {
+  color: orange;
+}
+
+.bullet-pass-rounded {
+  color: black;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.bullet-pass-rounded .fa {
+  color: black;
+  font-size: 10px;
+  height: 16px;
+  vertical-align: middle;
+  width: 10px;
+  transition: all ease 400ms;
+
+  &.active {
+    color: #1ed699;
+  }
+}
+
+.text-link {
+  color: #6C41D7;
+  font-size: 11px;
+  font-weight: 500;
+
+  &:hover {
+    color: #6C41D7;
+  }
+}

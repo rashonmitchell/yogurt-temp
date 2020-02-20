@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ loader: true, fadeout: !isLoading }" id="middle">
+  <div :class="{ loader: true, fadeout: !isLoading }">
     <div class="middle">
       <h1>yogurt</h1>
       <p>redefine yourself</p>
@@ -25,9 +25,9 @@ export default {
 
   p {
     direction: rtl;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
-    margin-top: -30px;
+    //margin-top: -30px;
     text-align: start;
   }
 }
