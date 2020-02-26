@@ -21,8 +21,8 @@
             <div class="navbar-nav ml-auto">
               <router-link class="nav-item nav-link" to="/about">About</router-link>
               <router-link class="nav-item nav-link" to="/settings"><font-awesome-icon icon="cog"></font-awesome-icon> Settings </router-link>
-              <router-link class="nav-item nav-link" to="/login">Login</router-link>
-              <router-link class="nav-item nav-link" to="/register">Register</router-link> 
+              <router-link class="nav-item nav-link" to="/login">Sign In</router-link>
+              <router-link class="nav-item nav-link" to="/register">Sign Up</router-link> 
             </div>
           </b-collapse>
         </div>
@@ -37,7 +37,7 @@
 import LoadingScreen from "./components/LoadingScreen";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import * as firebase from "firebase";
-import 'firebase/firestore';
+import "firebase/firestore";
 import db from "./db.js"
 
 export default {
@@ -49,15 +49,14 @@ export default {
     }
   },
   mounted() {
-    db.collection("users")
-      .doc("qFPmNSC47hpsVzkfgr9S")
-      .get()
-      .then(snapshot => {
-        this.user = snapshot.data().name;
-      }),
-      setTimeout(() => {
-      this.isLoading = false;
+    setTimeout(() => {
+    this.isLoading = false;
     }, 4000);
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        this.user = user.displayName;
+      }
+    })
   },
   components: {
     LoadingScreen,
@@ -76,11 +75,11 @@ export default {
 
 <style lang="scss">
 //@import './assets/scss/variables.scss';
-//@import './node_modules/bootstrap/scss/bootstrap.scss';
 $primary: #707070;
 @import './assets/scss/form.scss';
 @import './assets/scss/main.scss';
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap-vue/src/index.scss";
 
 body {
   margin: 0px;

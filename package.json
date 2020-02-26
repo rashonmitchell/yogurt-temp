@@ -14,6 +14,7 @@
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.5.0",
     "core-js": "^3.6.4",
+    "eslint-loader": "^3.0.3",
     "firebase": "^7.8.2",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
@@ -39,6 +40,9 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.41.6"
+  },
+  "resolutions": {
+    "eslint-loader": "2.1.2"
   },
   "eslintConfig": {
     "root": true,

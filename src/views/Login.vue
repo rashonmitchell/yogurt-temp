@@ -1,8 +1,8 @@
-<template lang="html">
+<!--<template lang="html">
   <section class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col wrapper-box">
-        <img class="mx-auto d-block" src="../assets/logo-new-color-site.png" alt="Compacto Records" title="Compacto Records">
+        <img class="mx-auto d-block" src="../assets/logo-new-color-site.png" alt="Yogurt Records" title="Yogurt Records">
         <p class="wrapper-box__title text-center">Sign in</p>
         <div>
           <form class="form form-newaccount" id="loginForm">
@@ -29,44 +29,119 @@
       </div>
     </div>
   </section>
+</template> -->
+
+<template>
+  <div>
+    <form class="mt-3" @submit.prevent="login">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="card bg-light">
+              <div class="card-body">
+                <h3 class="font-weight-light mb-3">Sign In</h3>
+                <section class="form-group">
+                  <div class="col-12 alert alert-danger px-3" v-if="error">{{error}}</div>
+                  <label class="form-control-label sr-only" for="Email">Email</label>
+                  <input
+                    required
+                    class="form-control"
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    v-model="email"
+                  />
+                </section>
+                <section class="form-group">
+                  <input
+                    required
+                    class="form-control"
+                    type="password"
+                    placeholder="Password"
+                    v-model="password"
+                  />
+                </section>
+                <div class="form-group text-right mb-0">
+                  <button class="btn btn-primary" type="submit">Log in</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <p class="text-center mt-2">
+      or
+      <router-link to="/register">register</router-link>
+    </p>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'Login',
-    metaInfo: {
-      title: 'Sign in',
-      titleTemplate: '%s | Compacto Records'
-    },
-    data() {
-      return {
-        input: {
-          username: '',
-          password: '',
-        },
-        error: '',
-      }
-    },
-    methods: {
-      login() {
-        if(this.input.username != "" && this.input.password != "") {
-          if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-            this.$emit("authenticated", true);
-            this.$router.replace({ name: "secure" });
-          } else {
-            this.error = 'E-mail or password incorrect'
-            console.log("The username and / or password is incorrect");
+// export default {
+//   name: "Login",
+//   metaInfo: {
+//     title: "Sign in",
+//     titleTemplate: "%s | Yogurt "
+//   },
+//   data() {
+//     return {
+//       input: {
+//         username: "",
+//         password: "",
+//       },
+//       error: "",
+//     }
+//   },
+//   methods: {
+//     login() {
+//       if(this.input.username != "" && this.input.password != "") {
+//         if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
+//           this.$enter("authenticated", true);
+//           this.$router.replace({ name: "about" });
+//         } else {
+//           this.error = "E-mail or password incorrect"
+//           console.log("The username and / or password is incorrect");
+//         }
+//       } else {
+//         this.error = "Enter a valid e-mail and password"
+//         console.log("A username and password must be present");
+//       }
+//     },
+//     clearError() {
+//       this.error = ""
+//     },
+//   }
+// }
+
+import Firebase from "firebase";
+export default {
+  data: function() {
+    return {
+      email: "",
+      password: "",
+      error: ""
+    };
+  },
+  methods: {
+    login: function() {
+      const info = {
+        email: this.email,
+        password: this.password
+      };
+      Firebase.auth()
+        .signInWithEmailAndPassword(info.email, info.password)
+        .then(
+          () => {
+            this.$router.push("dashboard");
+          },
+          error => {
+            this.error = error.message;
           }
-        } else {
-          this.error = 'Enter a valid e-mail and password'
-          console.log("A username and password must be present");
-        }
-      },
-      clearError() {
-        this.error = ''
-      },
+        );
     }
   }
+};
 </script>
 
 <style lang="scss">
