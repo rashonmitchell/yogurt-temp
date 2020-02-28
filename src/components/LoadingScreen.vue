@@ -15,13 +15,12 @@ export default {
 </script>
 
 <style lang="scss">
-
 .middle {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 
   p {
     direction: rtl;
@@ -48,7 +47,7 @@ export default {
 }
 
 .fadeout {
-  animation: fadeout 2s forwards;
+  animation: fadeout 1.5s forwards;
 }
 
 @keyframes fadeout {

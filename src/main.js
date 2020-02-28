@@ -6,7 +6,7 @@ import router from "./router";
 // import VeeValidate from 'vee-validate'
 // import Meta from 'vue-meta'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 // Vue.use(VueTheMask)
 // Vue.use(VeeValidate)
 // Vue.use(Meta)

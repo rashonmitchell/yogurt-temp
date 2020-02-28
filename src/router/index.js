@@ -1,9 +1,20 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
-//import './custom.scss';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import { BootstrapVue, IconsPlugin, LayoutPlugin } from "bootstrap-vue";
+// import './custom.scss';
 
-import { LayoutPlugin } from 'bootstrap-vue'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faCog,
+  faLink,
+  faEnvelope,
+  faUser
+} from '@fortawesome/free-solid-svg-icons';
+
+import Home from '../views/Home.vue';
+// import Settings from "../views/Settings.vue";
+import Login from '../views/Login.vue';
+import Register from '../views/Register.vue';
 Vue.use(LayoutPlugin)
 
 // Install BootstrapVue
@@ -11,18 +22,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-
-import {library} from "@fortawesome/fontawesome-svg-core";
-import {
-  faCog, faLink, faEnvelope
-} from "@fortawesome/free-solid-svg-icons"
-
-library.add(faCog, faLink, faEnvelope);
-
-import Home from "../views/Home.vue";
-// import Settings from "../views/Settings.vue";
-import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
+library.add(faCog, faLink, faEnvelope, faUser)
 
 Vue.use(VueRouter);
 

@@ -41,8 +41,12 @@
               <div class="card-body">
                 <h3 class="font-weight-light mb-3">Sign In</h3>
                 <section class="form-group">
-                  <div class="col-12 alert alert-danger px-3" v-if="error">{{error}}</div>
-                  <label class="form-control-label sr-only" for="Email">Email</label>
+                  <div class="col-12 alert alert-danger px-3" v-if="error">
+                    {{ error }}
+                  </div>
+                  <label class="form-control-label sr-only" for="Email"
+                    >Email</label
+                  >
                   <input
                     required
                     class="form-control"
@@ -72,7 +76,7 @@
     </form>
     <p class="text-center mt-2">
       or
-      <router-link to="/register">register</router-link>
+      <router-link to="/register" class="text-info">register</router-link>
     </p>
   </div>
 </template>
@@ -133,7 +137,7 @@ export default {
         .signInWithEmailAndPassword(info.email, info.password)
         .then(
           () => {
-            this.$router.push("dashboard");
+            this.$router.push("home");
           },
           error => {
             this.error = error.message;
@@ -145,13 +149,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .fade-enter,
-  .fade-leave-active {
-    opacity: 0;
-  }
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
 
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 300ms;
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 300ms;
+}
 </style>

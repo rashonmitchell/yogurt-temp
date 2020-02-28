@@ -1,67 +1,55 @@
 <template>
   <div id="app">
     <LoadingScreen :isLoading="isLoading" />
-    <!-- <Navigation /> -->
     <main v-if="!isLoading">
-      <nav class="site-nav navbar navbar-expand bg-primary navbar-dark">
-        <div id="nav" class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <!-- <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <router-link class="navbar-brand" to="/">Home</router-link>
-        </div> -->
-        <router-link class="navbar-brand" to="/">Home</router-link>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-          <b-collapse id="nav-collapse" is-nav>
-            <div class="navbar-nav ml-auto">
-              <router-link class="nav-item nav-link" to="/about">About</router-link>
-              <router-link class="nav-item nav-link" to="/settings"><font-awesome-icon icon="cog"></font-awesome-icon> Settings </router-link>
-              <router-link class="nav-item nav-link" to="/login">Sign In</router-link>
-              <router-link class="nav-item nav-link" to="/register">Sign Up</router-link> 
-            </div>
-          </b-collapse>
-        </div>
-      </nav>
-      
-      <router-view class="container" :user="user" />
+      <Navigation :user="user" @logout="logout" />
+      <router-view class="container" :user="user" @logout="logout" />
     </main>
   </div>
 </template>
 
 <script>
 import LoadingScreen from "./components/LoadingScreen";
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import Navigation from "@/components/Navigation.vue";
 import * as firebase from "firebase";
 import "firebase/firestore";
-import db from "./db.js"
+import db from "./db.js";
 
 export default {
   name: "App",
   data: function() {
     return {
-      isLoading: true ,
+      isLoading: true,
       user: null
-    }
+    };
+  },
+  methods: {
+    logout: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.user = null;
+          this.$router.push("login");
+        })
+    },
+    db
   },
   mounted() {
     setTimeout(() => {
-    this.isLoading = false;
-    }, 4000);
+      this.isLoading = false;
+    }, 4000),
     firebase.auth().onAuthStateChanged(user => {
-      if(user){
-        this.user = user.displayName;
-      }
-    })
+      if (user) {
+        this.user = user;
+        }
+    });
   },
   components: {
     LoadingScreen,
-    FontAwesomeIcon
-  },
+    Navigation
+  }
   // data() {
   //   return { isLoading: true };
   // },
@@ -75,9 +63,9 @@ export default {
 
 <style lang="scss">
 //@import './assets/scss/variables.scss';
-$primary: #707070;
-@import './assets/scss/form.scss';
-@import './assets/scss/main.scss';
+$primary: #fff;
+@import "./assets/scss/form.scss";
+@import "./assets/scss/main.scss";
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap-vue/src/index.scss";
 
@@ -95,15 +83,16 @@ body {
 
 nav {
   background: #cdcdcd;
-  border-bottom: 1px solid #2c3e50;
+  border-bottom: 1px solid #ddd;
+  height: 70px;
   padding: 15px 30px;
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #2c3e50 !important;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #42b983 !important;
     }
   }
 }
