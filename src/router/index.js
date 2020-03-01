@@ -8,7 +8,14 @@ import {
   faCog,
   faLink,
   faEnvelope,
-  faUser
+  faUser,
+  faUserCircle,
+  faTrash,
+  faListUl,
+  faRandom,
+  faUndo,
+  faStar,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 import Home from '../views/Home.vue';
@@ -22,7 +29,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-library.add(faCog, faLink, faEnvelope, faUser)
+library.add(faCog, faLink, faEnvelope, faUser, faUserCircle, faTrash, faListUl, faRandom, faUndo, faStar, faSignOutAlt)
 
 Vue.use(VueRouter);
 

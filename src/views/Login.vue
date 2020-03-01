@@ -38,7 +38,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-6">
             <div class="card bg-light">
-              <div class="card-body">
+              <div class="card-body card-body-lr">
                 <h3 class="font-weight-light mb-3">Sign In</h3>
                 <section class="form-group">
                   <div class="col-12 alert alert-danger px-3" v-if="error">
@@ -65,19 +65,24 @@
                     v-model="password"
                   />
                 </section>
-                <div class="form-group text-right mb-0">
-                  <button class="btn btn-primary" type="submit">Log in</button>
+                <div class="custom-control custom-checkbox text-left">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
+                <div class="form-group text-right mb-0">
+                  <button class="btn btn-outline-info" type="submit">Log in</button>
+                </div>
+                <hr>
+                <p class="text-right mt-2">
+                  <!-- New User? Sign up for an account -->
+                  <router-link to="/register" class="text-info">No account yet?</router-link>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </form>
-    <p class="text-center mt-2">
-      or
-      <router-link to="/register" class="text-info">register</router-link>
-    </p>
   </div>
 </template>
 
@@ -149,6 +154,10 @@ export default {
 </script>
 
 <style lang="scss">
+.card-body-lr {
+  box-shadow: 5px 10px 18px #d3d3d3;
+}
+
 .fade-enter,
 .fade-leave-active {
   opacity: 0;

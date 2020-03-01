@@ -25,16 +25,16 @@
               >Sign Up</router-link
             >
             <router-link class="nav-item nav-link" to="/dashboard" v-if="user"
-              ><font-awesome-icon icon="user"></font-awesome-icon>
+              ><font-awesome-icon icon="user-circle"></font-awesome-icon>
               {{ user.displayName }}</router-link
             >
-            <a
+            <b-link 
               href="#"
               class="nav-item nav-link"
               role="button"
               v-if="user"
               @click="$emit('logout')"
-              >Logout</a
+              > <font-awesome-icon icon="sign-out-alt"></font-awesome-icon> Logout</b-link
             >
           </div>
         </b-collapse>
@@ -66,7 +66,11 @@ nav {
     color: #2c3e50 !important;
 
     &.router-link-exact-active {
-      color: #42b983 !important;
+      color: #42b983;
+    }
+    :hover,
+    router-link:hover {
+      color: #42b983;
     }
   }
 }

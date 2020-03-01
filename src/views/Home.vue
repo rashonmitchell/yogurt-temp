@@ -2,6 +2,18 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <h1>Welcome</h1>
+
+    <!-- cards -->
+    <div class="card p-3" style="text-info">
+      <div class="text-center">
+        <div class="card-body">
+          <h5 class="card-title">title</h5>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <!-- cards end -->
+
     <div v-if="user" class="text-secondary text-center">
       <!-- Welcome back <span class="font-weight-bold text-info">{{ user }}</span>
       <a href="#" class="text-danger" role="button" @click="$emit('logout')">, logout</a> -->

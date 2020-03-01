@@ -3,7 +3,13 @@
     <LoadingScreen :isLoading="isLoading" />
     <main v-if="!isLoading">
       <Navigation :user="user" @logout="logout" />
-      <router-view class="container" :user="user" @logout="logout" />
+      <router-view 
+        class="container" 
+        :user="user" 
+        :meetings="meetings"
+        @logout="logout" 
+        @addMeeting="addMeeting"
+      />
     </main>
   </div>
 </template>
@@ -21,8 +27,13 @@ export default {
   data: function() {
     return {
       isLoading: true,
-      user: null
+      user: null,
+      meetings: []
     };
+  },
+  components: {
+    LoadingScreen,
+    Navigation
   },
   methods: {
     logout: function() {
@@ -34,7 +45,15 @@ export default {
           this.$router.push("login");
         })
     },
-    db
+    addMeeting: function(payload) {
+      db.collection("users")
+      .doc(this.user.uid)
+      .collection("meetings")
+      .add({
+        name: payload,
+        createAt: firebase.firestore.FieldValue.serverTimestamp()
+      })
+    }
   },
   mounted() {
     setTimeout(() => {
@@ -43,12 +62,29 @@ export default {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.user = user;
-        }
+
+        db.collection("users")
+          .doc(this.user.uid)
+          .collection("meetings")
+          //.orderBy("createAt") firebase method of sorting
+          .onSnapshot(snapshot => {
+            const snapData = [];
+            snapshot.forEach( doc => {
+              snapData.push({
+                id: doc.id,
+                name: doc.data().name
+              });
+            });
+            this.meetings = snapData.sort((a, b) => {
+              if (a.name.toLowerCase() < b.name.toLowerCase()) {
+                return 1;
+              } else {
+                return -1;
+              }
+            });
+          });
+      }
     });
-  },
-  components: {
-    LoadingScreen,
-    Navigation
   }
   // data() {
   //   return { isLoading: true };
