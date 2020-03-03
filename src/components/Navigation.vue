@@ -1,11 +1,12 @@
 <template>
   <div>
-    <nav class="site-nav navbar navbar-expand bg-primary navbar-dark">
-      <div id="nav" class="container-fluid">
-        <router-link class="navbar-brand" to="/">Home</router-link>
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+    <b-navbar toggleable="md" type="light" variant="primary">
+      <b-container>
+      <router-link class="navbar-brand" to="/">Home</router-link>
+      
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>
-          <div class="navbar-nav ml-auto">
+          <b-navbar-nav class="ml-auto">
             <router-link class="nav-item nav-link" to="/about"
               >About</router-link
             >
@@ -13,13 +14,13 @@
               ><font-awesome-icon icon="cog"></font-awesome-icon> Settings
             </router-link>
             <router-link
-              class="nav-item nav-link yo-button"
+              class="nav-item nav-link"
               to="/login"
               v-if="!user"
               >Sign In</router-link
             >
             <router-link
-              class="nav-item nav-link yo-button"
+              class="nav-item nav-link"
               to="/register"
               v-if="!user"
               >Sign Up</router-link
@@ -36,10 +37,10 @@
               @click="$emit('logout')"
               > <font-awesome-icon icon="sign-out-alt"></font-awesome-icon> Logout</b-link
             >
-          </div>
+          </b-navbar-nav>
         </b-collapse>
-      </div>
-    </nav>
+      </b-container>
+    </b-navbar>
   </div>
 </template>
 <script>
@@ -55,25 +56,6 @@ export default {
 
 <style lang="scss">
 $primary: #fff;
-nav {
-  background: #cdcdcd;
-  border-bottom: 1px solid #ddd;
-  height: 70px;
-  padding: 15px 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50 !important;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-    :hover,
-    router-link:hover {
-      color: #42b983;
-    }
-  }
-}
 
 .yo-button {
   display: inline-block;
