@@ -48,6 +48,32 @@
                       placeholder="Password"
                       v-model="passOne"
                     />
+
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-newaccount__bullet-steps d-flex flex-row">
+                          <div class="bullet-pass-hor"><span class=""></span></div> 
+                          <div class="bullet-pass-hor"><span class=""></span></div> 
+                          <div class="bullet-pass-hor"><span class=""></span></div>
+                        </div>
+                      </div> 
+                      
+                      <div class="col-sm-12">
+                        <span class="d-block bullet-pass-rounded text-left">
+                          <span aria-hidden="true"><font-awesome-icon class="fa" icon="circle"></font-awesome-icon></span>
+                          At least 6 characters
+                        </span> 
+                        <span class="d-block bullet-pass-rounded text-left">
+                          <span aria-hidden="true"><font-awesome-icon class="fa" icon="circle"></font-awesome-icon></span> 
+                          At least 1 number
+                        </span> 
+                        <span class="d-block bullet-pass-rounded text-left">
+                          <span aria-hidden="true"><font-awesome-icon class="fa" icon="circle"></font-awesome-icon></span> 
+                          At least 1 uppercase letter
+                        </span>
+                      </div>
+                    </div>
+                    
                   </section>
                   <section class="col-sm-6 form-group">
                     <input
@@ -79,6 +105,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import * as firebase from "firebase";
 export default {
   data: function() {
@@ -130,6 +157,9 @@ export default {
         this.error = null;
       }
     }
+  },
+  components: {
+    FontAwesomeIcon
   }
 };
 </script>
@@ -143,5 +173,13 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 300ms;
+}
+.bullet-pass-rounded .fa {
+  color: #ededed;
+  font-size: 10px;
+  height: 16px;
+  vertical-align: middle;
+  width: 10px;
+  transition: all .4s ease;
 }
 </style>

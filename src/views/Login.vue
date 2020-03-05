@@ -40,31 +40,34 @@
             <div class="card bg-light">
               <div class="card-body card-body-lr">
                 <h3 class="font-weight-light mb-3">Sign In</h3>
-                <section class="form-group">
                   <div class="col-12 alert alert-danger px-3" v-if="error">
                     {{ error }}
                   </div>
-                  <label class="form-control-label sr-only" for="Email"
-                    >Email</label
+                  <b-form-group
+                    label="Email address"
+                    label-for="Email"
+                    class="text-left"
                   >
-                  <input
-                    required
-                    class="form-control"
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    v-model="email"
-                  />
-                </section>
-                <section class="form-group">
-                  <input
-                    required
-                    class="form-control"
-                    type="password"
-                    placeholder="Password"
-                    v-model="password"
-                  />
-                </section>
+                    <input
+                      required
+                      class="form-control"
+                      type="email"
+                      id="email"
+                      v-model="email"
+                    />
+                  </b-form-group>
+                  <b-form-group
+                    label="Password"
+                    label-for="password"
+                    class="text-left"
+                  >
+                    <b-form-input 
+                      required
+                      type="password"
+                      v-model="password"
+                    ></b-form-input>
+                  </b-form-group>
+                
                 <div class="custom-control custom-checkbox text-left">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
                   <label class="custom-control-label" for="customCheck1">Remember password</label>

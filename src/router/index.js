@@ -5,6 +5,7 @@ import { BootstrapVue, IconsPlugin, LayoutPlugin } from "bootstrap-vue";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
+  faCircle,
   faCog,
   faLink,
   faEnvelope,
@@ -30,7 +31,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-library.add(faCog, faLink, faEnvelope, faUser, faUserCircle, faTrash, faListUl, faRandom, faUndo, faStar, faSignOutAlt, faUserEdit)
+library.add( faCircle, faCog, faLink, faEnvelope, faUser, faUserCircle, faTrash, faListUl, faRandom, faUndo, faStar, faSignOutAlt, faUserEdit)
 
 Vue.use(VueRouter);
 
