@@ -8,6 +8,10 @@
       <div class="text-center">
         <div class="card-body">
           <h5 class="card-title">title</h5>
+
+          <div>
+          {{updateMe}}
+          </div>
         </div>
         <div></div>
       </div>
@@ -15,17 +19,37 @@
     <!-- cards end -->
 
     <div v-if="user" class="text-secondary text-center">
-      <!-- Welcome back <span class="font-weight-bold text-info">{{ user }}</span>
-      <a href="#" class="text-danger" role="button" @click="$emit('logout')">, logout</a> -->
     </div>
   </div>
 </template>
 
 <script>
 import * as firebase from "firebase";
+import "firebase/firestore";
+import db from "../db";
 export default {
   name: "Home",
-  props: ["user"]
+  props: ["user"],
+
+  data: () => ({
+	  updateMe: null,
+  }),
+  methods: {
+    fetchDataFromServer() {
+      db.collection("msg").get().then((querySnapshot) => {
+        let returnArr = [];
+        querySnapshot.forEach((doc) => {
+          returnArr.push(doc.data().msg);
+        })
+          //console.log(returnArr);
+        this.updateMe = returnArr
+      });
+    }
+  },
+  created() {
+    this.fetchDataFromServer();
+  }
+
 
   // data: function(){
   // },

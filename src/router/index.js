@@ -15,7 +15,8 @@ import {
   faRandom,
   faUndo,
   faStar,
-  faSignOutAlt
+  faSignOutAlt,
+  faUserEdit
 } from '@fortawesome/free-solid-svg-icons';
 
 import Home from '../views/Home.vue';
@@ -29,7 +30,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-library.add(faCog, faLink, faEnvelope, faUser, faUserCircle, faTrash, faListUl, faRandom, faUndo, faStar, faSignOutAlt)
+library.add(faCog, faLink, faEnvelope, faUser, faUserCircle, faTrash, faListUl, faRandom, faUndo, faStar, faSignOutAlt, faUserEdit)
 
 Vue.use(VueRouter);
 
@@ -59,6 +60,12 @@ const routes = [
     name: "Dashboard",
     component: () =>
       import(/* webpackChunkName: "settings" */ "../views/Dashboard.vue")
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: () =>
+      import(/* webpackChunkName: "settings" */ "../views/Profile.vue")
   },
   {
     path: "/login",

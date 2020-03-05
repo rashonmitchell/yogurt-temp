@@ -28,7 +28,8 @@ export default {
     return {
       isLoading: true,
       user: null,
-      meetings: []
+      meetings: [],
+      msgs: []
     };
   },
   components: {
@@ -118,10 +119,7 @@ body {
 }
 
 nav {
-  background: #cdcdcd;
-  border-bottom: 1px solid #ddd;
-  height: 70px;
-  padding: 15px 30px;
+  border-bottom: 1px solid #cdcdcd;
 
   a {
     font-weight: bold;
@@ -131,5 +129,9 @@ nav {
       color: #42b983 !important;
     }
   }
-}
+
+  a:hover {
+    color: #42b983 !important;
+  }
+} 
 </style>
