@@ -9,15 +9,22 @@ import {
   faCog,
   faLink,
   faEnvelope,
+  faLock,
   faUser,
   faUserCircle,
   faTrash,
   faListUl,
   faRandom,
+  faReply,
   faUndo,
   faStar,
   faSignOutAlt,
-  faUserEdit
+  faUserEdit,
+  faPaperPlane,
+  faCalendarDay,
+  faCalendarTimes,
+  faBell,
+  faBookmark
 } from '@fortawesome/free-solid-svg-icons';
 
 import Home from '../views/Home.vue';
@@ -31,7 +38,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-library.add( faCircle, faCog, faLink, faEnvelope, faUser, faUserCircle, faTrash, faListUl, faRandom, faUndo, faStar, faSignOutAlt, faUserEdit)
+library.add( faCircle, faCog, faLink, faEnvelope, faLock, faUser, faBookmark, faUserCircle, faCalendarDay, faBell, faPaperPlane, faTrash, faListUl, faRandom, faReply, faUndo, faStar, faSignOutAlt, faUserEdit)
 
 Vue.use(VueRouter);
 
@@ -63,10 +70,10 @@ const routes = [
       import(/* webpackChunkName: "settings" */ "../views/Dashboard.vue")
   },
   {
-    path: "/profile",
-    name: "Profile",
+    path: "/bookmarks",
+    name: "Bookmarks",
     component: () =>
-      import(/* webpackChunkName: "settings" */ "../views/Profile.vue")
+      import(/* webpackChunkName: "settings" */ "../views/Bookmarks.vue")
   },
   {
     path: "/login",

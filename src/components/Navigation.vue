@@ -10,9 +10,6 @@
             <router-link class="nav-item nav-link text-right" to="/about"
               >About</router-link
             >
-            <router-link class="nav-item nav-link text-right" to="/settings"
-              ><font-awesome-icon icon="cog"></font-awesome-icon> Settings
-            </router-link>
 
             <router-link
               class="nav-item nav-link text-right"
@@ -30,6 +27,16 @@
               ><font-awesome-icon icon="user-circle"></font-awesome-icon>
               {{ user.displayName }}</router-link
             >
+
+            <router-link class="nav-item nav-link text-right" to="/settings" v-if="user"
+              ><font-awesome-icon icon="cog"></font-awesome-icon> Settings
+            </router-link>
+
+            <router-link class="nav-item nav-link text-right" to="/bookmarks" v-if="user"
+              ><font-awesome-icon icon="bookmark"></font-awesome-icon>
+              Bookmarks</router-link
+            >
+
             <b-link 
               href="#"
               class="nav-item nav-link text-right"
@@ -37,10 +44,6 @@
               v-if="user"
               @click="$emit('logout')"
               > <font-awesome-icon icon="sign-out-alt"></font-awesome-icon> Logout</b-link
-            >
-            <router-link class="nav-item nav-link text-right" to="/profile" v-if="user"
-              ><font-awesome-icon icon="user-edit"></font-awesome-icon>
-              Profile</router-link
             >
           </b-navbar-nav>
         </b-collapse>

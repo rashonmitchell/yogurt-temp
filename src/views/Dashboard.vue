@@ -2,7 +2,7 @@
   <div class="container mt-4">
     <div class="row justify-content-center">
       <div class="col-12 col-md-9 col-lg-7">
-        <h1 class="font-weight-light text-center">Add a Yogurt</h1>
+        <h1 class="font-weight-light text-center">Add to Yogurt</h1>
 
         <div class="card bg-light">
           <div class="card-body text-center">
