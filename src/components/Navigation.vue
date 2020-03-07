@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="md" type="light" variant="">
       <b-container>
-      <router-link class="navbar-brand" to="/">Home</router-link>
+      <router-link class="navbar-brand" to="/">Yogurt</router-link>
       
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         <b-collapse id="nav-collapse" is-nav>

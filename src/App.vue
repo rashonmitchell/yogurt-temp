@@ -68,7 +68,7 @@ export default {
         db.collection("users")
           .doc(this.user.uid)
           .collection("meetings")
-          //.orderBy("createAt") firebase method of sorting
+         //.orderBy("createAt") //firebase method of sorting
           .onSnapshot(snapshot => {
             const snapData = [];
             snapshot.forEach( doc => {
@@ -77,13 +77,26 @@ export default {
                 name: doc.data().name
               });
             });
+            //this.meetings = snapData;
+            //console.log(typeof snapData);
             this.meetings = snapData.sort((a, b) => {
               if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                return 1;
-              } else {
-                return -1;
-              }
-            });
+                  return 1;
+                } else {
+                  return -1;
+                }
+             });
+            // this.meetings = snapData.sort((a, b) => {
+            //   if (typeof b.name != 'undefined' && typeof a.name != 'undefined') {
+            //     console.log(typeof name);
+            //     //do stuff here
+            //     if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            //       return 1;
+            //     } else {
+            //       return -1;
+            //     }
+            //   }
+            // });
           });
       }
     });

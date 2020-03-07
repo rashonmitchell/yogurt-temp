@@ -1,7 +1,9 @@
 <template>
   <div class="profile mt-3">
     <b-container class="bv-example-row">
-    <b-row class="mb-3"><h1><font-awesome-icon icon="user-circle"></font-awesome-icon> {{ user.displayName }}</h1></b-row>
+    <b-row class="mb-3">
+      <h1><font-awesome-icon icon="user-circle"></font-awesome-icon> {{ user.displayName}}</h1>
+    </b-row>
     <b-row>
       <b-col cols="4" class="list-type">
         
@@ -56,9 +58,9 @@
         align="left">
           <b-form-group
             label="Name"
-            label-for="name"
+            label-for="displayName"
           >
-            <b-form-input id="name" v-model="name"></b-form-input>
+            <b-form-input id="displayName"></b-form-input>
           </b-form-group>
 
           <b-form-group
@@ -85,11 +87,9 @@
             label-for="country_select"
           >
             <b-form-select
-              v-model="selected"
-              :options="options-country"
               class="mb-3 form-control"
               value-field="item"
-              text-field="name"
+              text-field="country_select"
             >
             </b-form-select>
           </b-form-group>
@@ -353,11 +353,9 @@
             label-for="timezone"
           >
             <b-form-select
-              v-model="selected"
-              :options="options-timezone"
               class="mb-3 form-control"
               value-field="item"
-              text-field="name"
+              text-field="timezone"
             >
             </b-form-select>
           </b-form-group>
@@ -594,14 +592,14 @@
             label-for="time"
           >
             <b-form-select
-              v-model="selected"
-              :options="options-country"
               class="mb-3 form-control col-4"
               value-field="item"
-              text-field="name"
               id="hour"
-              name="hour"
-            >
+            > 
+            <!-- add this back in for all the form-select 
+              v-model="selected"
+              :options="options-country"  -->
+
               <option value="01">01</option>
               <option value="02">02</option>
               <option value="03">03</option>
@@ -617,13 +615,10 @@
               
             </b-form-select>
             <b-form-select
-              v-model="selected"
-              :options="options-country"
               class="mb-3 form-control col-4"
               value-field="item"
-              text-field="name"
+              text-field="minute"
               id="minute"
-              name="minute"
             >
               <option value="00">00</option>
               <option value="15">15</option>
@@ -631,13 +626,10 @@
               <option value="45">45</option>
             </b-form-select>
             <b-form-select
-              v-model="selected"
-              :options="options-country"
               class="mb-3 form-control col-4"
               value-field="item"
-              text-field="name"
+              text-field="meridian"
               id="meridian"
-              name="meridian"
             >
               <option value="AM">AM</option>
               <option value="PM">PM</option>
@@ -667,7 +659,14 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
 export default {
   name: "settings",
   data: {
-    activeItem: 'nav-profile-tab'
+    activeItem: 'nav-profile-tab',
+    // selected: [], // Must be an array reference!
+    //   options: [
+    //     { text: 'Orange', value: 'orange' },
+    //     { text: 'Apple', value: 'apple' },
+    //     { text: 'Pineapple', value: 'pineapple' },
+    //     { text: 'Grape', value: 'grape' }
+    //   ]
   },
   methods: {
     isActive (menuItem) {

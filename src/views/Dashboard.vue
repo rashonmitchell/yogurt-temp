@@ -8,7 +8,7 @@
           <div class="card-body text-center">
             <form class="formgroup">
               <div class="input-group input-group-lg">
-                <input
+                <b-form-input
                   type="text"
                   class="form-control"
                   name="meetingName"
@@ -16,7 +16,8 @@
                   aria-describedby="buttonAdd"
                   v-model="meetingName"
                   ref="meetingName"
-                />
+                  required ></b-form-input>
+
                 <div class="input-group-append">
                   <button
                     type="submit"
@@ -111,6 +112,4 @@ export default {
 }
 </script>
 <style lang="scss">
-
-//$btn-info: #4169e1 !important;
 </style>

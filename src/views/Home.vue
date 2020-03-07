@@ -3,24 +3,37 @@
     <img alt="Vue logo" src="../assets/logo.png" />
     <h1>Welcome</h1>
 
-    <!-- cards -->
-    <div class="card p-3" style="text-info">
-      <div class="text-center">
-        <div class="card-body">
-          <h5 class="card-title">title</h5>
+    <div>
+      <!-- cards -->
+      <b-card
+        header-tag="header"
+        footer-tag="footer"
+        class="my-4"
+        v-for="message in messages" 
+        :key="message"
+      >
+        <template v-slot:header cols="12">
+          <b-row >
+            <b-col><h4 class="text-left">Hello World</h4></b-col>
+            <b-col><h4 class="text-right">Hello World</h4></b-col>
+          </b-row>
+        </template>
 
-          <div>
-          {{updateMe}}
-          </div>
-        </div>
-        <div></div>
-      </div>
-    </div>
-    <!-- cards end -->
+        <b-card-body>
+          <b-card-text>
+            {{message}}
+          </b-card-text>
+        </b-card-body>
 
-    <div v-if="user" class="text-secondary text-center">
+        <template v-slot:footer>
+          <em>Footer Slot</em>
+        </template>
+      </b-card>
+      <!-- cards end -->
     </div>
   </div>
+
+  
 </template>
 
 <script>
@@ -32,7 +45,7 @@ export default {
   props: ["user"],
 
   data: () => ({
-	  updateMe: null,
+	  messages: null,
   }),
   methods: {
     fetchDataFromServer() {
@@ -42,7 +55,7 @@ export default {
           returnArr.push(doc.data().msg);
         })
           //console.log(returnArr);
-        this.updateMe = returnArr
+        this.messages = returnArr
       });
     }
   },
