@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>Welcome</h1>
+  <div class="home mt-5">
+    <!-- <img alt="Vue logo" src="../assets/logo.png" /> 
+    <h1>Welcome</h1>-->
 
     <div>
       <!-- cards -->
@@ -14,8 +14,13 @@
       >
         <template v-slot:header cols="12">
           <b-row >
-            <b-col><h4 class="text-left">Hello World</h4></b-col>
-            <b-col><h4 class="text-right">Hello World</h4></b-col>
+            <b-col><h4 class="text-left">{{currentDate}}</h4></b-col>
+            <b-col class="text-right pt-2"><font-awesome-icon icon="heart">
+              <b-button>
+              
+              </b-button>
+              </font-awesome-icon
+              ></b-col>
           </b-row>
         </template>
 
@@ -37,6 +42,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import * as firebase from "firebase";
 import "firebase/firestore";
 import db from "../db";
@@ -45,7 +51,8 @@ export default {
   props: ["user"],
 
   data: () => ({
-	  messages: null,
+    messages: null,
+    currentDate: null,
   }),
   methods: {
     fetchDataFromServer() {
@@ -57,10 +64,27 @@ export default {
           //console.log(returnArr);
         this.messages = returnArr
       });
+    },
+    callFunction: function () {
+      let optionsOfDate = { weekday: 'long', month: 'long', day: 'numeric' };
+      //let optionsOfDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      let today  = new Date();
+
+      //console.log(today.toLocaleDateString("en-US")); // 3/7/2020
+      //console.log(today.toLocaleDateString("en-US", optionsOfDate)); // Saturday, March 7, 2020
+
+      today.toLocaleDateString("en-US");
+      this.currentDate = today.toLocaleDateString("en-US", optionsOfDate);
     }
   },
   created() {
     this.fetchDataFromServer();
+  },
+  mounted () {
+    this.callFunction()
+  },
+  components: {
+    FontAwesomeIcon
   }
 
 

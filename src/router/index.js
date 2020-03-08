@@ -24,7 +24,8 @@ import {
   faCalendarDay,
   faCalendarTimes,
   faBell,
-  faBookmark
+  faBookmark,
+  faHeart
 } from '@fortawesome/free-solid-svg-icons';
 
 import Home from '../views/Home.vue';
@@ -38,7 +39,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-library.add( faCircle, faCog, faLink, faEnvelope, faLock, faUser, faBookmark, faUserCircle, faCalendarDay, faBell, faPaperPlane, faTrash, faListUl, faRandom, faReply, faUndo, faStar, faSignOutAlt, faUserEdit)
+library.add( faCircle, faCog, faLink, faEnvelope, faLock, faUser, faBookmark, faUserCircle, faHeart, faCalendarDay, faBell, faPaperPlane, faTrash, faListUl, faRandom, faReply, faUndo, faStar, faSignOutAlt, faUserEdit)
 
 Vue.use(VueRouter);
 
