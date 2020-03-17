@@ -40,8 +40,8 @@
                     v-model="email"
                   />
                 </section>
-                <div class="form-row">
-                  <section class="col-sm-6 form-group">
+                <div class="form-group">
+                  <section class="form-group">
                     <input
                       class="form-control"
                       type="password"
@@ -75,7 +75,7 @@
                     </div>
                     
                   </section>
-                  <section class="col-sm-6 form-group">
+                  <section class="form-group">
                     <input
                       class="form-control"
                       type="password"

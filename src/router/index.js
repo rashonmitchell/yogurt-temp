@@ -87,6 +87,11 @@ const routes = [
     component: Register
   },
   {
+    path: "/checkin/:userID/:meetingID",
+    name: "CheckIn",
+    //component: CheckIn
+  },
+  {
     path: "*",
     redirect: "/"
   }

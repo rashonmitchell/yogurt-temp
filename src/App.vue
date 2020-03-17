@@ -8,7 +8,8 @@
         :user="user" 
         :meetings="meetings"
         @logout="logout" 
-        @addMeeting="addMeeting"
+        @addYogurt="addYogurt"
+        @deleteMeeting ="deleteMeeting"
       />
     </main>
   </div>
@@ -46,7 +47,7 @@ export default {
           this.$router.push("login");
         })
     },
-    addMeeting: function(payload) {
+    addYogurt: function(payload) {
       db.collection("users")
       .doc(this.user.uid)
       .collection("meetings")
@@ -54,6 +55,13 @@ export default {
         name: payload,
         createAt: firebase.firestore.FieldValue.serverTimestamp()
       })
+    },
+    deleteMeeting: function(payload) {
+      db.collection("users")
+      .doc(this.user.uid)
+      .collection("meetings")
+      .doc(payload)
+      .delete();
     }
   },
   mounted() {
@@ -148,4 +156,18 @@ nav {
     color: #42b983 !important;
   }
 } 
+
+.btn {
+  //border: none;
+}
+
+.card-header,
+.card-footer {
+  background-color: #ffffff;
+}
+
+hr {
+  height: 1px;
+  background-color: #42b983;
+}
 </style>

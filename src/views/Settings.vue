@@ -1,5 +1,5 @@
 <template>
-  <div class="profile mt-3">
+  <div class="profile mt-3 mb-3">
     <b-container class="bv-example-row">
     <b-row class="mb-3">
       <h1><font-awesome-icon icon="user-circle"></font-awesome-icon> {{ user.displayName}}</h1>
@@ -9,50 +9,59 @@
         
         <!-- <ul> -->
           <li class="nav-item">
-            <router-link class="text-info text-left nav-link" 
-            to="#nav-profile-tab" 
+            <a class="text-info text-left nav-link" 
+            href="#nav-profile-tab" 
             @click.prevent="setActive('nav-profile-tab')" 
-            v-bind:class="{ active: isActive('nav-profile-tab') }">
+            v-bind:class="{ active: (this.activeItem === 'nav-profile-tab') }">
               <font-awesome-icon icon="user-edit"></font-awesome-icon>
-              My Info</router-link>
+              My Info</a>
           </li>
 
           <li class="nav-item">
-            <router-link class="text-info text-left nav-link" 
-            to="#nav-password-tab" 
+            <a class="text-info text-left nav-link" 
+            href="#nav-password-tab" 
             @click.prevent="setActive('nav-password-tab')" 
-            v-bind:class="{ active: isActive('nav-password-tab') }">
+            v-bind:class="{ active: (this.activeItem === 'nav-password-tab') }">
               <font-awesome-icon icon="lock"></font-awesome-icon>
-              Password & Security</router-link>
+              Password & Security</a>
           </li>
 
           <li class="nav-item">
-            <router-link class="text-info text-left nav-link" to="#nav-email-tab">
+            <a class="text-info text-left nav-link" 
+            href="#nav-email-tab"
+            @click.prevent="setActive('nav-email-tab')" 
+            v-bind:class="{ active: (this.activeItem === 'nav-email-tab') }">
               <font-awesome-icon icon="envelope"></font-awesome-icon>
               Change Email
-            </router-link>
+            </a>
           </li>
 
           <li class="nav-item">
-            <router-link class="text-info text-left nav-link" to="#nav-notfication-tab">
+            <a class="text-info text-left nav-link" 
+            href="#nav-notfication-tab"
+            @click.prevent="setActive('nav-notfication-tab')"
+            v-bind:class="{ active: (this.activeItem === 'nav-notfication-tab') }">
               <font-awesome-icon icon="bell"></font-awesome-icon>
               Notfication
-            </router-link>
+            </a>
           </li>
 
           <li class="nav-item">
-            <router-link class="text-info text-left nav-link" to="#nav-dailyYo-tab">
+            <a class="text-info text-left nav-link" 
+            href="#nav-dailyYo-tab"
+            @click.prevent="setActive('nav-dailyYo-tab')"
+            v-bind:class="{ active: (this.activeItem === 'nav-dailyYo-tab') }">
               <font-awesome-icon icon="calendar-day"></font-awesome-icon>
               Daily Yogurt
-            </router-link>
+            </a>
           </li>
         <!-- </ul> -->
       </b-col>
 
       <b-col cols="8" class="tab-content" id="myTabContent">
         <b-card 
-        class="tab-pane fade show active"
-        v-bind:class="{ 'active show': isActive('nav-profile-tab') }" 
+        class="tab-pane active fade"
+        v-bind:class="{ 'active show': (this.activeItem === 'nav-profile-tab') }" 
         id="nav-profile-tab" 
         title="Edit Profile" 
         align="left">
@@ -510,8 +519,8 @@
         </b-card>
 
         <b-card 
-        class="my-4" 
-        v-bind:class="{ 'active show': isActive('nav-password-tab') }" 
+        class="my-4 fade" 
+        v-bind:class="{ 'active show': (this.activeItem === 'nav-password-tab') }" 
         id="nav-password-tab" 
         title="Edit Password" 
         align="left">
@@ -540,8 +549,8 @@
         </b-card>
 
         <b-card 
-        class="my-4" 
-        v-bind:class="{ 'active show': isActive('nav-email-tab') }" 
+        class="my-4 fade d-none" 
+        v-bind:class="{ 'active d-none': (this.activeItem === 'nav-email-tab') }" 
         id="nav-email-tab" 
         title="Edit Email" 
         align="left">
@@ -563,8 +572,8 @@
         </b-card>
 
         <b-card 
-        class="my-4" 
-        v-bind:class="{ 'active show': isActive('nav-password-tab') }" 
+        class="my-4 fade d-none" 
+        v-bind:class="{ 'active d-none': (this.activeItem === 'nav-password-tab') }" 
         id="nav-password-tab" 
         title="Manage Notfication" 
         align="left">
@@ -582,8 +591,8 @@
         </b-card>
 
         <b-card 
-        class="my-4" 
-        v-bind:class="{ 'active show': isActive('nav-dailyYo-tab') }" 
+        class="my-4 fade d-none" 
+        v-bind:class="{ 'active d-none': (this.activeItem === 'nav-dailyYo-tab')}" 
         id="nav-dailyYo-tab" 
         title="Daily Yogurt" 
         align="left">
@@ -658,7 +667,7 @@
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
 export default {
   name: "settings",
-  data: {
+  data:() => ({
     activeItem: 'nav-profile-tab',
     // selected: [], // Must be an array reference!
     //   options: [
@@ -667,12 +676,10 @@ export default {
     //     { text: 'Pineapple', value: 'pineapple' },
     //     { text: 'Grape', value: 'grape' }
     //   ]
-  },
+  }),
   methods: {
-    isActive (menuItem) {
-      return this.activeItem === menuItem
-    },
     setActive (menuItem) {
+      console.log(menuItem)
       this.activeItem = menuItem
     }
   },
@@ -688,6 +695,7 @@ export default {
 	// height: 27px;
   background-color: transparent;
 	border: none;
+  border-radius: 0;
 	border-bottom: 2px solid #e6e6e6;
 	width: 100%;
 	color: #666;
@@ -724,7 +732,6 @@ select.form-control {
 }
 textarea.form-control {
 	padding: 8px 0;
-	//background: url('../images/textarea-bg.png') no-repeat right bottom 3px;
 }
 
 </style>

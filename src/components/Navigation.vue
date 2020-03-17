@@ -37,6 +37,15 @@
               Bookmarks</router-link
             >
 
+            <b-nav-item-dropdown v-if="user" class="text-right">
+              <template v-slot:button-content>
+                <font-awesome-icon icon="user-circle"></font-awesome-icon>
+                {{ user.displayName }}
+              </template>
+              <b-dropdown-item href="#">An item</b-dropdown-item>
+              <b-dropdown-item href="#">Another item</b-dropdown-item>
+            </b-nav-item-dropdown>
+
             <b-link 
               href="#"
               class="nav-item nav-link text-right"

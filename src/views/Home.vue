@@ -15,7 +15,7 @@
         <template v-slot:header cols="12">
           <b-row >
             <b-col><h4 class="text-left">{{currentDate}}</h4></b-col>
-            <b-col class="text-right pt-2"><font-awesome-icon icon="heart">
+            <b-col class="text-right pt-2"><font-awesome-icon icon="heart" class="red">
               <b-button>
               
               </b-button>
@@ -111,3 +111,8 @@ export default {
   // }
 };
 </script>
+<style lang="scss">
+.red:hover{
+  color: #dc3445 !important;
+}
+</style>
