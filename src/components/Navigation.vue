@@ -23,37 +23,69 @@
               v-if="!user"
               >Sign Up</router-link
             >
-            <router-link class="nav-item nav-link text-right" to="/dashboard" v-if="user"
+            <!-- <router-link class="nav-item nav-link text-right" to="/dashboard" v-if="user"
               ><font-awesome-icon icon="user-circle"></font-awesome-icon>
               {{ user.displayName }}</router-link
-            >
+            > -->
 
             <router-link class="nav-item nav-link text-right" to="/settings" v-if="user"
               ><font-awesome-icon icon="cog"></font-awesome-icon> Settings
             </router-link>
 
-            <router-link class="nav-item nav-link text-right" to="/bookmarks" v-if="user"
+            <!-- <router-link class="nav-item nav-link text-right" to="/bookmarks" v-if="user"
               ><font-awesome-icon icon="bookmark"></font-awesome-icon>
               Bookmarks</router-link
-            >
+            > -->
 
-            <b-nav-item-dropdown v-if="user" class="text-right">
-              <template v-slot:button-content>
+            <b-nav-item-dropdown 
+              class="text-right"
+              v-if="user" 
+              right
+            >
+              <template v-slot:button-content right>
                 <font-awesome-icon icon="user-circle"></font-awesome-icon>
                 {{ user.displayName }}
               </template>
-              <b-dropdown-item href="#">An item</b-dropdown-item>
-              <b-dropdown-item href="#">Another item</b-dropdown-item>
-            </b-nav-item-dropdown>
 
-            <b-link 
-              href="#"
-              class="nav-item nav-link text-right"
-              role="button"
-              v-if="user"
-              @click="$emit('logout')"
-              > <font-awesome-icon icon="sign-out-alt"></font-awesome-icon> Logout</b-link
-            >
+              <b-dropdown-header id="dropdown-header-label">
+                Dropdown header
+              </b-dropdown-header>
+
+              <b-dropdown-item 
+                class="text-right"
+                to="/dashboard"
+                v-if="user"
+              ><font-awesome-icon icon="user-circle"></font-awesome-icon>
+              {{ user.displayName }}</b-dropdown-item>
+              
+              <b-dropdown-item 
+                class="text-right"
+                href="#"
+              >
+                An item
+              </b-dropdown-item>
+
+              <b-dropdown-item
+                class="text-right" 
+                to="/bookmarks"
+                v-if="user"
+              ><font-awesome-icon icon="bookmark"></font-awesome-icon>
+                Bookmarks
+              </b-dropdown-item>
+              <b-dropdown-divider></b-dropdown-divider>
+
+              <b-dropdown-item
+                href="#"
+                class="text-right"
+                role="button"
+                v-if="user"
+                @click="$emit('logout')"
+              ><font-awesome-icon icon="sign-out-alt"></font-awesome-icon>
+                Logout
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+            <!-- <hr> -->
+            <div></div>
           </b-navbar-nav>
         </b-collapse>
       </b-container>
@@ -72,4 +104,11 @@ export default {
 </script>
 
 <style lang="scss">
+  .dropdown-menu {
+    margin: .5rem 0 0 !important;
+
+    .dropdown-divider {
+      border-top: 1px solid #42b983;
+    }
+  }
 </style>

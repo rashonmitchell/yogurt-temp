@@ -122,7 +122,7 @@ export default {
 
 <style lang="scss">
 //@import './assets/scss/variables.scss';
-$primary: #fff;
+$primary: #42b983;
 @import "./assets/scss/form.scss";
 @import "./assets/scss/main.scss";
 @import "node_modules/bootstrap/scss/bootstrap";

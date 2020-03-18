@@ -62,10 +62,13 @@ export default {
           returnArr.push(doc.data().msg);
         })
           //console.log(returnArr);
-        this.messages = returnArr
+          this.messages = returnArr;
+        // setTimeout(() => {
+        //   this.messages = returnArr;
+        // }, 1000);
       });
     },
-    callFunction: function () {
+    callFunction: function() {
       let optionsOfDate = { weekday: 'long', month: 'long', day: 'numeric' };
       //let optionsOfDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       let today  = new Date();
