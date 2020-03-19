@@ -4,6 +4,7 @@ import { BootstrapVue, IconsPlugin, LayoutPlugin } from "bootstrap-vue";
 // import './custom.scss';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import {
   faCircle,
   faCog,
@@ -25,6 +26,7 @@ import {
   faCalendarTimes,
   faBell,
   faBookmark,
+  // faGoogle,
   faHeart
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -39,7 +41,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-library.add( faCircle, faCog, faLink, faEnvelope, faLock, faUser, faBookmark, faUserCircle, faHeart, faCalendarDay, faBell, faPaperPlane, faTrash, faListUl, faRandom, faReply, faUndo, faStar, faSignOutAlt, faUserEdit)
+library.add( faFacebook, faGoogle, faCircle, faCog, faLink, faEnvelope, faLock, faUser, faBookmark, faUserCircle, faHeart, faCalendarDay, faBell, faPaperPlane, faTrash, faListUl, faRandom, faReply, faUndo, faStar, faSignOutAlt, faUserEdit)
 
 Vue.use(VueRouter);
 

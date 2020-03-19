@@ -73,7 +73,28 @@
                   <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
                 <div class="form-group text-right mb-0">
-                  <button class="btn btn-outline-info" type="submit">Log in</button>
+                  <button class="btn btn-outline-info" type="submit">Sign in</button>
+                </div>
+
+                <div class="form-group mb-0"> 
+                  <p class="text-primary">
+                    Or Sign In Using
+                  </p> 
+                  <button 
+                    class="btn social-btn-google" 
+                    @click="socialLogin"
+                  >
+                    <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'google' }"></font-awesome-icon>
+                    Google
+                  </button>
+                
+                  <button 
+                    class="btn social-btn-facebook" 
+                    @click="socialLogin"
+                  >
+                    <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"></font-awesome-icon>
+                    Facebook
+                  </button>
                 </div>
                 <hr>
                 <p class="text-right mt-2">
@@ -126,6 +147,7 @@
 //   }
 // }
 
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Firebase from "firebase";
 export default {
   data: function() {
@@ -134,6 +156,9 @@ export default {
       password: "",
       error: ""
     };
+  },
+  components: {
+    FontAwesomeIcon
   },
   methods: {
     login: function() {
@@ -148,6 +173,19 @@ export default {
             this.$router.push("home");
           },
           error => {
+            this.error = error.message;
+          }
+        );
+    },
+    socialLogin: function() {
+      const provider = new Firebase.auth.GoogleAuthProvider();
+
+      Firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+          this.$router.replace("home");
+        },
+        error => {
             this.error = error.message;
           }
         );
@@ -169,5 +207,15 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 300ms;
+}
+
+.social-btn-google:hover, 
+.social-btn-google:active {
+  color: #de5246;
+}
+
+.social-btn-facebook:hover, 
+.social-btn-facebook:active {
+  color: #3b5998;
 }
 </style>

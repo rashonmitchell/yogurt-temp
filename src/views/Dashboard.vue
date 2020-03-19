@@ -118,8 +118,32 @@ export default {
 }
 </script>
 <style lang="scss">
+.form-control,
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-append > .btn {
+  //outline: 0;
+  // border-width: 0 0 2px;
+  // border-color: #e6e6e6;
+
+  background-color: transparent;
+  border: none;
   border-radius: 0;
+  border-bottom: 2px solid #e6e6e6;
+  width: 100%;
+  color: #42b983;
+  &:focus,
+  [type=text]:focus {
+    border-color: #42b983;
+	}
+}
+
+.input-group-lg > .input-group-append > .btn:hover,
+.input-group-lg > .input-group-append > .btn:active {
+  color: white;
+  background: #42b983;
+  &:focus,
+  [type=text]:focus {
+		border-color: #42b983;
+	}
 }
 </style>

@@ -157,9 +157,9 @@ nav {
   }
 } 
 
-.btn {
-  //border: none;
-}
+// .btn {
+//   //border: none;
+// }
 
 .card-header,
 .card-footer {

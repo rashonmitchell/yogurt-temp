@@ -110,5 +110,9 @@ export default {
     .dropdown-divider {
       border-top: 1px solid #42b983;
     }
+
+    a.dropdown-item:active {
+      color: white !important;
+    }
   }
 </style>

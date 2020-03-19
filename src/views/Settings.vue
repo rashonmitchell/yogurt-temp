@@ -700,7 +700,7 @@ export default {
 	width: 100%;
 	color: #666;
 	&:focus {
-		border-color: #e9e0cf;
+		border-color: #42b983;
 	}
 	&::-webkit-input-placeholder { 
 		color: #999;
