@@ -39,7 +39,7 @@
             <b-form-input id="location" ></b-form-input>
           </b-form-group>
 
-          <b-form-group
+          <!-- <b-form-group
             label="Country or Region"
             label-for="country_select"
           >
@@ -49,13 +49,18 @@
               text-field="country_select"
             >
             </b-form-select>
-          </b-form-group>
+          </b-form-group> -->
 
-          <!-- <b-form-group
+          <b-form-group
             label="Country or Region"
             label-for="country_select"
           >
-            <select id="user_country" name="user[country]"><option value="">--Select--</option>&lt;option value="" disabled="disabled"&gt;-------------&lt;/option&gt;
+            <b-form-select 
+              id="user_country" 
+              class="mb-3 form-control custom-select" 
+              name="user[country]"
+            >
+              <option value="">--Select--</option>&lt;option value="" disabled="disabled"&gt;-------------&lt;/option&gt;
               <option value="AF">Afghanistan</option>
               <option value="AL">Albania</option>
               <option value="DZ">Algeria</option>
@@ -302,8 +307,8 @@
               <option value="ZM">Zambia</option>
               <option value="ZW">Zimbabwe</option>
               <option value="AX">Åland Islands</option>
-            </select>
-          </b-form-group> -->
+            </b-form-select>
+          </b-form-group>
 
           <b-form-group
             label="Timezone"

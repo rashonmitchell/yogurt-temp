@@ -15,7 +15,7 @@
                         label="Current Email Address"
                         label-for="email"
                     >
-                    <b-form-input id="email"></b-form-input>
+                    <b-form-input id="email" :placeholder="user.email"></b-form-input>
                     </b-form-group>
 
                     <b-form-group
@@ -48,9 +48,9 @@ export default {
 <style lang="scss">
 .form-control {
 	// height: 27px;
-  background-color: transparent;
+    background-color: transparent;
 	border: none;
-  border-radius: 0;
+    border-radius: 0;
 	border-bottom: 2px solid #e6e6e6;
 	width: 100%;
 	color: #666;
