@@ -17,6 +17,7 @@
                   v-model="meetingName"
                   ref="meetingName"
                   required ></b-form-input>
+                
 
                 <div class="input-group-append">
                   <button
@@ -30,6 +31,12 @@
                 </div>
               </div>
             </form>
+
+            <div class="mt-3">
+              <label for="example-datepicker" class="text-left">Choose a date</label>
+              <b-form-datepicker id="example-datepicker" class="mb-2"></b-form-datepicker>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -130,7 +137,7 @@ export default {
   border-radius: 0;
   border-bottom: 2px solid #e6e6e6;
   width: 100%;
-  color: #42b983;
+  color: black;
   &:focus,
   [type=text]:focus {
     border-color: #42b983;

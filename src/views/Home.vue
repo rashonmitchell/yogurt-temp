@@ -14,7 +14,12 @@
       >
         <template v-slot:header cols="12">
           <b-row >
-            <b-col><h4 class="text-left">{{currentDate}}</h4></b-col>
+            <b-col class="">
+              <p class="text-left">
+                  {{currentDate}}
+                <span class="text-left">Today's Yogurt</span> 
+              </p>
+            </b-col>
             <b-col class="text-right pt-2"><font-awesome-icon icon="heart" class="red">
               <b-button>
               
@@ -31,7 +36,21 @@
         </b-card-body>
 
         <template v-slot:footer>
-          <em>Footer Slot</em>
+          <!-- <em>Footer Slot</em> -->
+          <b-row>
+            <b-col class="text-right">
+              <b-button 
+              @click="toggleStar(item.id)" 
+              variant="link">
+                <font-awesome-icon icon="star"></font-awesome-icon>
+                Save
+              </b-button>
+              <b-button :pressed.sync="myToggle" variant="link">
+                <font-awesome-icon icon="share-alt"></font-awesome-icon>
+                Share
+              </b-button>
+            </b-col>
+          </b-row>
         </template>
       </b-card>
       <!-- cards end -->
@@ -53,8 +72,19 @@ export default {
   data: () => ({
     messages: null,
     currentDate: null,
+    myToggle: false,
   }),
   methods: {
+    toggleStar: function(){
+      if (this.user && this.user.uid == this.userID) {
+        const ref = db
+        .collection("users")
+        .doc(this.user.uid)
+        .collection("meetings")
+        .doc(this.meetingID)
+        .collection("")
+      }
+    },
     fetchDataFromServer() {
       db.collection("msg").get().then((querySnapshot) => {
         let returnArr = [];
@@ -89,33 +119,13 @@ export default {
   components: {
     FontAwesomeIcon
   }
-
-
-  // data: function(){
-  // },
-  // methods: {
-  //   fetchMsgs (){
-  //     let msgRef = firebase.database().ref('/msg');
-  //     // msgRef.once('value', function(snapshot) {
-  //     //   console.log(msgRef);
-  //     //   // snapshot.forEach(function(childSnapshot) {
-  //     //   //   let childData = childSnapshot.val();
-  //     //   //   console.log(childData);
-  //     //   // });
-  //     // });
-
-  //     firebase.database().ref('/msg').once('value').then(function(snapshot) {
-  //     console.log(snapshot.val());
-  //   });
-  //   }
-  // },
-  // created() {
-  //   this.fetchMsgs();
-  // }
 };
 </script>
 <style lang="scss">
 .red:hover{
   color: #dc3445 !important;
+}
+.button-link-active {
+  color: yellow;
 }
 </style>

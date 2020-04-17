@@ -90,7 +90,7 @@
                 
                   <button 
                     class="btn social-btn-facebook" 
-                    @click="socialLogin"
+                    @click="socialLoginFacebook"
                   >
                     <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"></font-awesome-icon>
                     Facebook
@@ -183,12 +183,43 @@ export default {
       Firebase.auth()
         .signInWithPopup(provider)
         .then((result) => {
+          this.$router.push("home");
+        },
+        error => {
+            this.error = error.message;
+          }
+        );
+    },
+    socialLoginFacebook: function() {
+      const provider = new Firebase.auth.FacebookAuthProvider();
+
+      Firebase.auth()
+        //.signInWithPopup(provider)
+        //.signInWithRedirect(provider)
+        .getRedirectResult()
+        .then((result) => {
+          console.log(result);
+          if (result.credential) {
+            const token = result.credential.accessToken;
+          }
+          const user = result.user;
           this.$router.replace("home");
         },
         error => {
             this.error = error.message;
           }
         );
+        console.log(result, "this is the result");
+
+      Firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+      }).catch(function(error) {
+        // An error happened.
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        let email = error.email;
+        let credential = error.credential;
+      });
     }
   }
 };

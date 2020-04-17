@@ -8,8 +8,9 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav class="ml-auto">
             <router-link class="nav-item nav-link text-right" to="/about"
-              >About</router-link
+              ><font-awesome-icon icon="info-circle"></font-awesome-icon> About</router-link
             >
+
 
             <router-link
               class="nav-item nav-link text-right"
@@ -47,30 +48,33 @@
                 {{ user.displayName }}
               </template>
 
-              <b-dropdown-header id="dropdown-header-label">
-                Dropdown header
+              <b-dropdown-header id="dropdown-header-label" class="text-right">
+                <!-- <img v-bind:src="user.photoURL" class="avatar img-circle img-thumbnail" alt="avatar" /> -->
+                <!-- <font-awesome-icon icon="user-circle"></font-awesome-icon> -->
+                <b>Hello,</b> {{ user.displayName }}
               </b-dropdown-header>
 
               <b-dropdown-item 
                 class="text-right"
                 to="/dashboard"
                 v-if="user"
-              ><font-awesome-icon icon="user-circle"></font-awesome-icon>
-              {{ user.displayName }}</b-dropdown-item>
-              
-              <b-dropdown-item 
-                class="text-right"
-                href="#"
-              >
-                An item
+              ><font-awesome-icon icon="address-card"></font-awesome-icon>
+                Dashboard
               </b-dropdown-item>
-
+              
               <b-dropdown-item
                 class="text-right" 
                 to="/bookmarks"
                 v-if="user"
               ><font-awesome-icon icon="bookmark"></font-awesome-icon>
                 Bookmarks
+              </b-dropdown-item>
+              
+              <b-dropdown-item 
+                class="text-right"
+                href="#"
+              >
+                An item
               </b-dropdown-item>
               <b-dropdown-divider></b-dropdown-divider>
 
@@ -104,6 +108,10 @@ export default {
 </script>
 
 <style lang="scss">
+  .avatar {
+    border-radius: 50%;
+    width: 20%;
+  }
   .dropdown-menu {
     margin: .5rem 0 0 !important;
 

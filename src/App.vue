@@ -20,6 +20,7 @@ import LoadingScreen from "./components/LoadingScreen";
 // import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Navigation from "@/components/Navigation.vue";
 import * as firebase from "firebase";
+import * as firebaseui from 'firebaseui'
 import "firebase/firestore";
 import db from "./db.js";
 
@@ -69,7 +70,16 @@ export default {
       this.isLoading = false;
     }, 4000),
     firebase.auth().onAuthStateChanged(user => {
-      if (user) {
+      let name, email, photoUrl, uid, emailVerified;
+      if (user != null) {
+        user.providerData.forEach(function (profile) {
+          console.log("Sign-in provider: " + profile.providerId);
+          console.log("  Provider-specific UID: " + profile.uid);
+          console.log("  Name: " + profile.displayName);
+          console.log("  Email: " + profile.email);
+          console.log("  Photo URL: " + profile.photoURL);
+          console.log(profile);
+        });
         this.user = user;
         //console.log(user);
 

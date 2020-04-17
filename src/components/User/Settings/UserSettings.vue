@@ -1,62 +1,10 @@
 <template>
   <div class="profile mt-3 mb-3">
     <b-container class="bv-example-row">
-    <b-row class="mb-3">
-      <h1><font-awesome-icon icon="user-circle"></font-awesome-icon> {{ user.displayName}}</h1>
-    </b-row>
+      <UserSettingsHeader :user="user" />
+
     <b-row>
-      <b-col cols="4" class="list-type">
-        
-        <!-- <ul> -->
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
-            href="#nav-profile-tab" 
-            @click.prevent="setActive('nav-profile-tab')" 
-            v-bind:class="{ active: (this.activeItem === 'nav-profile-tab') }">
-              <font-awesome-icon icon="user-edit"></font-awesome-icon>
-              My Info</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
-            href="#nav-password-tab" 
-            @click.prevent="setActive('nav-password-tab')" 
-            v-bind:class="{ active: (this.activeItem === 'nav-password-tab') }">
-              <font-awesome-icon icon="lock"></font-awesome-icon>
-              Password & Security</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
-            href="#nav-email-tab"
-            @click.prevent="setActive('nav-email-tab')" 
-            v-bind:class="{ active: (this.activeItem === 'nav-email-tab') }">
-              <font-awesome-icon icon="envelope"></font-awesome-icon>
-              Change Email
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
-            href="#nav-notfication-tab"
-            @click.prevent="setActive('nav-notfication-tab')"
-            v-bind:class="{ active: (this.activeItem === 'nav-notfication-tab') }">
-              <font-awesome-icon icon="bell"></font-awesome-icon>
-              Notfication
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
-            href="#nav-dailyYo-tab"
-            @click.prevent="setActive('nav-dailyYo-tab')"
-            v-bind:class="{ active: (this.activeItem === 'nav-dailyYo-tab') }">
-              <font-awesome-icon icon="calendar-day"></font-awesome-icon>
-              Daily Yogurt
-            </a>
-          </li>
-        <!-- </ul> -->
-      </b-col>
+      <UserSettingsMenu/>
 
       <b-col cols="8" class="tab-content" id="myTabContent">
         <b-card 
@@ -69,7 +17,7 @@
             label="Name"
             label-for="displayName"
           >
-            <b-form-input id="displayName"></b-form-input>
+            <b-form-input id="displayName" :placeholder="user.displayName "></b-form-input>
           </b-form-group>
 
           <b-form-group
@@ -517,145 +465,6 @@
           
           <b-link href="#" class="card-link btn btn-outline-success">Update Profile</b-link>
         </b-card>
-
-        <b-card 
-        class="my-4 fade" 
-        v-bind:class="{ 'active show': (this.activeItem === 'nav-password-tab') }" 
-        id="nav-password-tab" 
-        title="Edit Password" 
-        align="left">
-          <b-form-group
-            label="Current Password"
-            label-for="current-password"
-          >
-            <b-form-input id="current-password"></b-form-input>
-          </b-form-group>
-
-          <b-form-group
-            label="New Password"
-            label-for="new-password"
-          >
-            <b-form-input id="new-password"></b-form-input>
-          </b-form-group>
-
-          <b-form-group
-            label="Confirm Password"
-            label-for="confirm-password"
-          >
-            <b-form-input id="confirm-password" ></b-form-input>
-          </b-form-group>
-          
-          <b-link href="#" class="card-link btn btn-outline-success">Update Password</b-link>
-        </b-card>
-
-        <b-card 
-        class="my-4 fade d-none" 
-        v-bind:class="{ 'active d-none': (this.activeItem === 'nav-email-tab') }" 
-        id="nav-email-tab" 
-        title="Edit Email" 
-        align="left">
-          <b-form-group
-            label="Current Email Address"
-            label-for="email"
-          >
-            <b-form-input id="email"></b-form-input>
-          </b-form-group>
-
-          <b-form-group
-            label="New Email Address"
-            label-for="email"
-          >
-            <b-form-input id="email"></b-form-input>
-          </b-form-group>
-          
-          <b-link href="#" class="card-link btn btn-outline-success">Update Email</b-link>
-        </b-card>
-
-        <b-card 
-        class="my-4 fade d-none" 
-        v-bind:class="{ 'active d-none': (this.activeItem === 'nav-password-tab') }" 
-        id="nav-password-tab" 
-        title="Manage Notfication" 
-        align="left">
-          <b-form-group
-            label="# Edit Notfication"
-            label-for="edit-notfication"
-          >
-            <b-form-checkbox-group>
-              <b-form-checkbox value="email-notfication">Email</b-form-checkbox>
-              <b-form-checkbox value="mobile-notfication">Mobile</b-form-checkbox>
-            </b-form-checkbox-group>
-          </b-form-group>
-          
-          <b-link href="#" class="card-link btn btn-outline-success">Update Notfication</b-link>
-        </b-card>
-
-        <b-card 
-        class="my-4 fade d-none" 
-        v-bind:class="{ 'active d-none': (this.activeItem === 'nav-dailyYo-tab')}" 
-        id="nav-dailyYo-tab" 
-        title="Daily Yogurt" 
-        align="left">
-          <b-form-group
-            label="Email Delivery Time:"
-            label-for="time"
-          >
-            <b-form-select
-              class="mb-3 form-control col-4"
-              value-field="item"
-              id="hour"
-            > 
-            <!-- add this back in for all the form-select 
-              v-model="selected"
-              :options="options-country"  -->
-
-              <option value="01">01</option>
-              <option value="02">02</option>
-              <option value="03">03</option>
-              <option value="04">04</option>
-              <option value="05">05</option>
-              <option value="06">06</option>
-              <option value="07">07</option>
-              <option value="08">08</option>
-              <option value="09" selected="selected">09</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              
-            </b-form-select>
-            <b-form-select
-              class="mb-3 form-control col-4"
-              value-field="item"
-              text-field="minute"
-              id="minute"
-            >
-              <option value="00">00</option>
-              <option value="15">15</option>
-              <option value="30">30</option>
-              <option value="45">45</option>
-            </b-form-select>
-            <b-form-select
-              class="mb-3 form-control col-4"
-              value-field="item"
-              text-field="meridian"
-              id="meridian"
-            >
-              <option value="AM">AM</option>
-              <option value="PM">PM</option>
-            </b-form-select>
-          <b-link href="#" class="card-link btn btn-outline-success">Subscribe</b-link>
-          </b-form-group>
-
-          <b-form-group
-            label="Daily Push Notifications"
-          >
-            # todo:<br><br>
-            # add push notfications for desktop/mobile<br><br>
-            # add mobile device info
-          </b-form-group>
-          
-          <b-link href="#" class="card-link btn btn-outline-success">Update Daily Yogurt</b-link>
-        </b-card>
       </b-col>
     </b-row>
   </b-container>
@@ -665,6 +474,8 @@
 </template>
 <script>
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
+import UserSettingsHeader from '@/components/User/Settings/UserSettingsHeader'
+import UserSettingsMenu from '@/components/User/Settings/UserSettingsMenu'
 export default {
   name: "settings",
   data:() => ({
@@ -676,6 +487,7 @@ export default {
     //     { text: 'Pineapple', value: 'pineapple' },
     //     { text: 'Grape', value: 'grape' }
     //   ]
+    isProfileEditMode: false,
   }),
   methods: {
     setActive (menuItem) {
@@ -684,7 +496,9 @@ export default {
     }
   },
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    UserSettingsHeader,
+    UserSettingsMenu
   },
   props: ["user"]
 }
