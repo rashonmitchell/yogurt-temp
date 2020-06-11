@@ -10,40 +10,40 @@
       </div>
     </div> 
   <b-row> -->
-    <b-col cols="4" class="list-type text-left">
+    <b-col cols="4" class="list-type text-left sidebar-menu">
         <!-- <ul> -->
-          <li class="nav-item">
-            <a class="text-info nav-link" 
+          <li class="nav-item" :class="{' active ' : link === 1}">
+            <a class="text-info nav-link"
             href="#/settings" >
               <font-awesome-icon icon="user-edit"></font-awesome-icon>
               My Info</a>
           </li>
 
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
+          <li class="nav-item" :class="{' active ' : link === 2}">
+            <a class="text-info text-left nav-link"
             href="#/settings/password" >
               <font-awesome-icon icon="lock"></font-awesome-icon>
               Password & Security</a>
           </li>
 
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
+          <li class="nav-item" :class="{' active ' : link === 3}">
+            <a class="text-info text-left nav-link"
             href="#/settings/email">
               <font-awesome-icon icon="envelope"></font-awesome-icon>
               Change Email
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
+          <li class="nav-item" :class="{active : link === 4}">
+            <a class="text-info text-left nav-link"
             href="#/settings/notfication">
               <font-awesome-icon icon="bell"></font-awesome-icon>
               Notfication
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="text-info text-left nav-link" 
+          <li class="nav-item" :class="{active : link === 5}">
+            <a class="text-info text-left nav-link"
             href="#/settings/daily-yogurt">
               <font-awesome-icon icon="calendar-day"></font-awesome-icon>
               Daily Yogurt
@@ -57,9 +57,30 @@
 <script>
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
 export default {
+  data: function() {
+    return {
+      link: 1
+    };
+  },
   components: {
     FontAwesomeIcon
   },
   props: ["user"]
 }
 </script>
+
+<style lang="scss">
+  .text-color{
+    color: red;
+  }
+  .active {
+    color: #42b983;
+  }
+  // .b-link .text-info:active {
+  //   color: #42b983 !important;
+    
+  //   &.active {
+  //     color: #42b983;
+  //   }
+  //}
+</style>

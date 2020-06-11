@@ -8,7 +8,7 @@
 
       <b-col cols="8" class="tab-content" id="myTabContent">
         <b-card 
-        class="tab-pane active fade"
+        class="tab-pane fade"
         v-bind:class="{ 'active show': (this.activeItem === 'nav-profile-tab') }" 
         id="nav-profile-tab" 
         title="Edit Profile" 
@@ -485,13 +485,6 @@ export default {
   name: "settings",
   data:() => ({
     activeItem: 'nav-profile-tab',
-    // selected: [], // Must be an array reference!
-    //   options: [
-    //     { text: 'Orange', value: 'orange' },
-    //     { text: 'Apple', value: 'apple' },
-    //     { text: 'Pineapple', value: 'pineapple' },
-    //     { text: 'Grape', value: 'grape' }
-    //   ]
     isProfileEditMode: false,
   }),
   methods: {

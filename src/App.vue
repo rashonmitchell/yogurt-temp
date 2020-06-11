@@ -150,6 +150,10 @@ body {
   color: #2c3e50;
 }
 
+.navbar-brand {
+  color: #2c3e50 !important;
+}
+
 nav {
   border-bottom: 1px solid #cdcdcd;
 
@@ -157,7 +161,7 @@ nav {
     font-weight: bold;
     color: #2c3e50 !important;
 
-    &.router-link-exact-active {
+    &.router-link-active {
       color: #42b983 !important;
     }
   }

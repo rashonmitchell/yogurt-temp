@@ -7,6 +7,7 @@
             <UserSettingsMenu/>
             <b-col cols="8" class="tab-content" id="myTabContent">
                 <b-card 
+                    v-bind:class="{ 'active show': (this.activeItem === 'nav-password-tab') }" 
                     id="nav-password-tab" 
                     title="Edit Password" 
                     align="left">
@@ -44,6 +45,10 @@ import UserSettingsHeader from '@/components/User/Settings/UserSettingsHeader'
 import UserSettingsMenu from '@/components/User/Settings/UserSettingsMenu'
 export default {
     name: 'UserProfilePassword',
+    data:() => ({
+        activeItem: 'nav-password-tab',
+        isProfileEditMode: false,
+    }),
     components: {
         UserSettingsHeader,
         UserSettingsMenu
