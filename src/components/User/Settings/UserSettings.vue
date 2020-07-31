@@ -13,11 +13,18 @@
         id="nav-profile-tab" 
         title="Edit Profile" 
         align="left">
+          <div v-if="message" class="col-12 alert alert-danger px-3">
+            {{ message }}
+          </div>
           <b-form-group
             label="Name"
             label-for="displayName"
+            v-on:submit.prevent="updatePro"
           >
-            <b-form-input id="displayName" :placeholder="user.displayName "></b-form-input>
+            <b-form-input 
+              id="displayName" 
+              :placeholder="user.displayName" 
+              v-model="user.name"></b-form-input>
           </b-form-group>
 
           <b-form-group
@@ -468,7 +475,10 @@
             <option value="Pacific/Apia">Samoa (GMT 13)</option></select>
           </b-form-group> -->
           
-          <b-link href="#" class="card-link btn btn-outline-success">Update Profile</b-link>
+          <b-link 
+            class="card-link btn btn-outline-success" 
+            >Update Profile
+          </b-link>
         </b-card>
       </b-col>
     </b-row>
@@ -481,18 +491,77 @@
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
 import UserSettingsHeader from '@/components/User/Settings/UserSettingsHeader'
 import UserSettingsMenu from '@/components/User/Settings/UserSettingsMenu'
+import * as firebase from "firebase";
+import * as firebaseui from 'firebaseui'
+import "firebase/firestore";
+import db from "../../../db";
+
 export default {
   name: "settings",
   data:() => ({
     activeItem: 'nav-profile-tab',
     isProfileEditMode: false,
+    return: {
+      message: " ",
+      user: {
+      }
+    }
   }),
+  created() {
+    // let dbRef = db.collection('users').doc(this.$route.params.id);
+    //   dbRef.get().then((doc) => {
+    //       this.user = doc.data();
+    //   }).catch((error) => {
+    //       console.log(error)
+    //   })
+    db.collection("users")
+    .doc(this.user.uid)
+      .onSnapshot((doc) => {
+        if (doc.exists) {
+          this.user = { ...doc.data() };
+        }
+      });
+    // db.collection("users")
+    // .doc(Auth.currentUser.uid)
+    // db.collection("users").doc(this.$route.params.id)
+    // .get().then((doc) => {
+    //     this.user = doc.data();
+    //   }).catch((error) => {
+    //       console.log(error)
+    //   })
+  },
   methods: {
     setActive (menuItem) {
-      console.log(menuItem)
       this.activeItem = menuItem
+    },
+    updatePro(event) {
+      console.log(user, 'this is the user');
+      event.preventDefault()
+      db.collection("users")
+        .doc(this.$route.params.id)
+        .update(this.user).then(() => {
+          this.message = "User successfully updated!";
+          console.log("User successfully updated!");
+          this.$router.push("dashboard")
+      }).catch((error) => {
+          console.log(error);
+      });
+      // this.authUser.updateProfile({
+      //   displayName: this.displayName
+      // })
     }
   },
+  // mounted() {
+  //   let user = firebase.auth().currentUser;
+
+  //   user.updateProfile({
+  //     displayName: " "
+  //   }).then(function() {
+  //     // Update successful.
+  //   }).catch(function(error) {
+  //     // An error happened.
+  //   });
+  // },
   components: {
     FontAwesomeIcon,
     UserSettingsHeader,

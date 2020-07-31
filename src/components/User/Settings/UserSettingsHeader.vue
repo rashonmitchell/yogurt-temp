@@ -3,6 +3,13 @@
       <!-- <h1><font-awesome-icon icon="user-circle"></font-awesome-icon> {{ user.displayName}}</h1> -->
       <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="text-center profile-userpic">
+          <input type="file" id="file" style="display:none;" />
+          <button 
+            id="edit-upload" name="edit-upload"
+            class="text-info image-edit"
+            v-on:click="thisFileUpload();">
+              <font-awesome-icon class="edit-pencil" icon="pencil-alt"></font-awesome-icon>
+          </button>
           <h2 class="text-left">
             <img v-bind:src="user.photoURL" class="avatar img-circle img-thumbnail" alt="avatar" />
             {{ user.displayName}}
@@ -17,12 +24,21 @@
 </template>
 
 <script>
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome"
 export default {
-    name: "UserSettingsHeader",
-    props: ["user"],
-    data:() => ({
-        isProfileEditMode: false,
-    })
+  name: "UserSettingsHeader",
+  props: ["user"],
+  data:() => ({
+      isProfileEditMode: false,
+  }),
+  components: {
+    FontAwesomeIcon
+  },
+  methods: {
+    thisFileUpload() {
+      document.getElementById("file").click();
+    }
+  }
 }
 </script>
 
@@ -36,6 +52,7 @@ export default {
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
+  position: relative;
 }
 
 .img-thumbnail {
@@ -43,7 +60,23 @@ export default {
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
-  max-width: 100%;
   height: auto;
+  max-width: 100%;
+}
+.image-edit {
+  background: transparent;
+  border: none;
+  position: absolute;
+  left: 50px;
+  top: 0;
+  z-index: 2;
+}
+.edit-pencil {
+  padding-bottom: 8px;
+  width: 18px;
+
+  :focus {
+    border: none;
+  }
 }
 </style>

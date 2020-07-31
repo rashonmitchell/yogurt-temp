@@ -30,13 +30,17 @@ import {
   faShareAlt,
   faSuitcase,
   faInfoCircle,
-  faAddressCard
+  faAddressCard,
+  faPencilAlt,
+  faEyeSlash,
+  faEye
 } from '@fortawesome/free-solid-svg-icons';
 
 import Home from '../views/Home.vue';
 // import Settings from "../views/Settings.vue";
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
+import ForgotPassword from '@/components/Auth/ForgotPassword';
 import UserProfilePassword from '@/components/User/Profile/UserProfilePassword';
 import UserProfileEmail from '@/components/User/Profile/UserProfileEmail';
 import UserProfileNotfication from '@/components/User/Profile/UserProfileNotfication';
@@ -48,7 +52,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
-library.add( faFacebook, faGoogle, faSuitcase, faAddressCard, faInfoCircle, faCircle, faCog, faShareAlt, faLink, faEnvelope, faLock, faUser, faBookmark, faUserCircle, faHeart, faCalendarDay, faBell, faPaperPlane, faTrash, faListUl, faRandom, faReply, faUndo, faStar, faSignOutAlt, faUserEdit)
+library.add( faFacebook, faGoogle, faEyeSlash, faEye, faPencilAlt, faSuitcase, faAddressCard, faInfoCircle, faCircle, faCog, faShareAlt, faLink, faEnvelope, faLock, faUser, faBookmark, faUserCircle, faHeart, faCalendarDay, faBell, faPaperPlane, faTrash, faListUl, faRandom, faReply, faUndo, faStar, faSignOutAlt, faUserEdit)
 
 Vue.use(VueRouter);
 
@@ -110,6 +114,11 @@ const routes = [
     path: "/register",
     name: "Sign Up",
     component: Register
+  },
+  {
+    path: "/forgot-password",
+    name: "Forgot Password",
+    component: ForgotPassword
   },
   {
     path: "/checkin/:userID/:meetingID",

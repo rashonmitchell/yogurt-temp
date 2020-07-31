@@ -81,7 +81,7 @@ export default {
           console.log(profile);
         });
         this.user = user;
-        //console.log(user);
+        //console.log(profile.displayName, "params property");
 
         db.collection("users")
           .doc(this.user.uid)

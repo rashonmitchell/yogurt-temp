@@ -33,7 +33,7 @@
 
 <template>
   <div>
-    <form class="mt-3" @submit.prevent="login">
+    <form class="mt-5" @submit.prevent="login">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
@@ -65,7 +65,9 @@
                       required
                       type="password"
                       v-model="password"
-                    ></b-form-input>
+                      style="position:relative;"
+                    >
+                    </b-form-input>
                   </b-form-group>
                 
                 <div class="custom-control custom-checkbox text-left">
@@ -101,6 +103,9 @@
                   <!-- New User? Sign up for an account -->
                   <router-link to="/register" class="text-info">No account yet?</router-link>
                 </p>
+                <p class="text-right mt-2">
+                  <router-link to="/forgot-password" class="text-info">Forgot password?</router-link>
+               </p>
               </div>
             </div>
           </div>
@@ -148,25 +153,32 @@
 // }
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import Firebase from "firebase";
+import firebase from "firebase";
 export default {
   data: function() {
     return {
       email: "",
       password: "",
-      error: ""
+      error: "",
+      visibility: 'password'
     };
   },
   components: {
     FontAwesomeIcon
   },
   methods: {
+    showPassword() {
+        this.visibility = 'text';
+    },
+    hidePassword() {
+        this.visibility = 'password';
+    },
     login: function() {
       const info = {
         email: this.email,
         password: this.password
       };
-      Firebase.auth()
+      firebase.auth()
         .signInWithEmailAndPassword(info.email, info.password)
         .then(
           () => {
@@ -178,9 +190,9 @@ export default {
         );
     },
     socialLogin: function() {
-      const provider = new Firebase.auth.GoogleAuthProvider();
+      const provider = new firebase.auth.GoogleAuthProvider();
 
-      Firebase.auth()
+      firebase.auth()
         .signInWithPopup(provider)
         .then((result) => {
           this.$router.push("home");
@@ -191,9 +203,9 @@ export default {
         );
     },
     socialLoginFacebook: function() {
-      const provider = new Firebase.auth.FacebookAuthProvider();
+      const provider = new firebase.auth.FacebookAuthProvider();
 
-      Firebase.auth()
+      firebase.auth()
         //.signInWithPopup(provider)
         //.signInWithRedirect(provider)
         .getRedirectResult()
@@ -211,7 +223,7 @@ export default {
         );
         console.log(result, "this is the result");
 
-      Firebase.auth().signOut().then(function() {
+      firebase.auth().signOut().then(function() {
         // Sign-out successful.
       }).catch(function(error) {
         // An error happened.

@@ -73,8 +73,8 @@
               <b-dropdown-item 
                 class="text-right"
                 href="#"
-              >
-                An item
+              ><font-awesome-icon icon="star"></font-awesome-icon>
+                Saved
               </b-dropdown-item>
               <b-dropdown-divider></b-dropdown-divider>
 

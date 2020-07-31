@@ -84,7 +84,7 @@
               title="Check In"
               :to="'/checkin/'+ user.uid + '/' + item.id"
             >
-              <font-awesome-icon icon="link"></font-awesome-icon>
+              <font-awesome-icon icon="share-alt"></font-awesome-icon>
             </router-link>
             <router-link
               class="btn btn-sm btn-outline-secondary"

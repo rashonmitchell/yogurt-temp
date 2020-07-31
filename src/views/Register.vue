@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <form class="mt-3" @submit.prevent="register">
+    <form class="mt-5" @submit.prevent="register">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
@@ -12,7 +12,7 @@
                     {{ error }}
                   </div>
                   <section class="col-sm-12 form-group">
-                    <label class="form-control-label sr-only" for="displayName"
+                    <label class="form-control-label text-left" for="displayName"
                       >Display Name</label
                     >
                     <input
@@ -129,6 +129,7 @@ export default {
           .createUserWithEmailAndPassword(info.email, info.password)
           .then(
             userCredentials => {
+              console.log("maybe", userCredentials.user);
               return userCredentials.user
                 .updateProfile({
                   displayName: info.displayName
